@@ -1,17 +1,18 @@
 #codinng=utf-8
+"""
+generate Chinese and English mixed text.
+"""
 from random import randint
 
-zh_file = "./000001-010000.txt"
-en_file = "./metadata.csv"
-
-# zh_file = "./aa.txt"
-# en_file = "./bb.txt"
-
+zh_file = "./baker.txt"
+en_file = "./ljspeech.txt"
 txtfile = "./new.txt"
 zh_sentences = []
 en_sentences = []
 
+
 def gen_mixed_sentence(zh_sentence, en_sentence, num_en_words: int=10):
+    
     insert_pos = randint(0, len(zh_sentence) - 1)
     en_list = en_sentence.split(" ")
     en_start = randint(0, len(en_list) - 1)
@@ -47,7 +48,3 @@ with open(txtfile, "w") as fw, open(zh_file, "r") as f1, open(en_file, "r") as f
         mix_num += 1
         new_id = str(mix_num).zfill(6)
         fw.write("zh_en_" + new_id + "|" + mix_sentence + "\n")
-
-
-
-
